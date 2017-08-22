@@ -50,12 +50,12 @@
 
 		var imagesDiv = $("<div class='images'>");
 		
-		var imageUrl = results[i].images.fixed_height.url;
+		var imageUrl = results[i].images.original.url;
 
-		var imageUrlStill = results[i].images.fixed_height_still.url;
+		var imageUrlStill = results[i].images.original_still.url;
 
 
-		var celebImg = $("<img>").attr("src", imageUrl).attr("data-still", imageUrlStill).attr("data-animate", imageUrl).attr("data-state", "still").addClass("gif");
+		var celebImg = $("<img>").attr("src", imageUrlStill).attr("data-still", imageUrlStill).attr("data-animate", imageUrl).attr("data-state", "still").addClass("gif");
 
 		var rating = $("<p>").text("Rating: " + results[i].rating);
 
