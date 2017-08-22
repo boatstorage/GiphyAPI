@@ -23,14 +23,18 @@
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-	var topics = ["jennifer lawerance", "eddie murphy" ];
+	var topics = ["jennifer lawrence", "eddie murphy" ];
 
 
 	function getGif(){
+
+	$("#add-gif").on("click", function() {
        
 	var celebrity = $(this).attr("data-name");
 
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + celebrity + "&api_key=dc6zaTOxFJmzC";
+	var queryURL = "http://api.giphy.com/v1/gifs/search?q=jennifer+lawrence&api_key=dc6zaTOxFJmzC&limit=10";
+
+
 
 
 	$.ajax({
@@ -38,10 +42,28 @@
 		method: "GET"
 	}).done(function(response) {
 
-	}}
+		console.log(response);
+
+		var imagesDiv = $("<div class='images'>");
+		
+		var imageUrl = response.data.url;
+
+		console.log(imageUrl);
+
+		var celebImg = $("<img>").attr("src", imageUrl);
+
+		var pOne = $("<p>").html(celebImg);
+
+		$("#gif-view").prepend(imagesDiv);
+
+		
+
+	})
+
+	})
+	getGif();
 
 
-	
 
 	function makeButtons() {
 
@@ -57,9 +79,8 @@
 		}
 	}
 
-
-
-
+	makeButtons();
+}
 	</script>
 
 
