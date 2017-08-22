@@ -52,9 +52,10 @@
 		
 		var imageUrl = results[i].images.fixed_height.url;
 
-		console.log(imageUrl);
+		var imageUrlStill = results[i].images.fixed_height_still.url;
 
-		var celebImg = $("<img>").attr("src", imageUrl);
+
+		var celebImg = $("<img>").attr("src", imageUrl).attr("data-still", imageUrlStill).attr("data-animate", imageUrl).attr("data-state", "still").addClass("gif");
 
 		var rating = $("<p>").text("Rating: " + results[i].rating);
 
@@ -64,6 +65,23 @@
 
 
 		$("#gif-view").append(imagesDiv);
+
+		$(".gif").on("click", function(event) {
+		console.log(this)
+		event.preventDefault();
+		var state = $(this).attr("data-state");
+		
+
+		if (state === "still") {
+			$(this).attr("src", $(this).attr("data-animate"));
+			$(this).attr("data-state", "animate");
+		} else {
+			$(this).attr("src", $(this).attr("data-still"));
+			$(this).attr("data-state", "still");
+
+			
+		}
+	})
 	}
 		
 
@@ -99,7 +117,13 @@
 		
 	});
 
+
+	
+
 	$(document).on("click", ".gifs", getGif);
+
+	
+
 
 	makeButtons();
 
