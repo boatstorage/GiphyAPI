@@ -28,11 +28,11 @@
 
 	function getGif(){
 
-
+	$("#gif-view").empty();
        
-	// var celebrity = $(this).attr("data-name");
+	var celebrity = $(this).attr("data-name");
 
-	var queryURL = "http://api.giphy.com/v1/gifs/search?q=jennifer+lawrence&api_key=dc6zaTOxFJmzC&limit=10";
+	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + celebrity + "&api_key=dc6zaTOxFJmzC&limit=10";
 
 
 
@@ -56,15 +56,14 @@
 
 		var celebImg = $("<img>").attr("src", imageUrl);
 
-		var pOne = $("<p>").html(celebImg);
-
-		var rating = response.data.rating;
+		var rating = $("<p>").text("Rating: " + results[i].rating);
 
 		imagesDiv.append(celebImg);
+		imagesDiv.append(rating);
 
 
 
-		$("#gif-view").prepend(imagesDiv);
+		$("#gif-view").append(imagesDiv);
 	}
 		
 
@@ -75,22 +74,35 @@
 
 
 
-	// function makeButtons() {
+	function makeButtons() {
 
-	// 	$("#buttons-view").empty();
+		$("#buttons-view").empty();
 
-	// 	for (var i = 0; i < topics.length; i++) {
-	// 		var a = $("<buttons>");
-	// 		a.addClass("gifs");
-	// 		a.attr("data-name",topics[i]);
-	// 		a.text(topics[i]);
+		for (var i = 0; i < topics.length; i++) {
+			var a = $("<buttons>");
+			a.addClass("gifs");
+			a.attr("data-name",topics[i]);
+			a.text(topics[i]);
 
-	// 		$("#buttons-view").append(a);
-	// 	}
-	// }
+			$("#buttons-view").append(a);
+		}
+	}
 
-	// makeButtons();
-// }
+	$("#add-gif").on("click", function(event){
+		event.preventDefault();
+
+		var gif = $("#gif-input").val().trim();
+
+		topics.push(gif);
+
+		makeButtons();
+		
+	});
+
+	$(document).on("click", ".gifs", getGif);
+
+	makeButtons();
+
 	</script>
 
 
