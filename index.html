@@ -2,6 +2,29 @@
 <html>
 <head>
 	<title>celebrity gifs</title>
+	 <style type="text/css">
+    button,
+    div,
+    form,
+    input {
+      margin: 10px;
+    }
+
+    body {
+    	background-color: pink;
+    	font-family: helvetica;
+    }
+
+    button {
+    	background-color: indigo;
+    	color: white;
+    	border: round;
+    	width: 10%;
+    	height: 5%;
+    }
+
+
+  </style>
 </head>
 <body>
 
@@ -9,21 +32,24 @@
 		<h1>Celebrity gifs!</h1>
 
 		
-		<div id ="buttons-view"></div>
+		  <div id ="buttons-view"></div>
 
 		<form id="gif-form">
-      <label for="gif-input">Add a celebrity gif</label>
+      <label for="gif-input">Add a gif</label>
       <input type="text" id="gif-input"><br>
+		
 
       
-      <input id="add-gif" type="submit" value="Add a celebrity gif">
+      <input id="add-gif" type="submit" value="Add a gif!">
+    
     </form>
-	<div id="gif-view"></div>
+    <div id="gif-view"></div>
+	
 	</div>
  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-	var topics = ["jennifer lawrence", "eddie murphy" ];
+	var topics = ["Jennifer Lawrence", "Eddie Murphy", "The Rock", "Ilana Glazer" ];
 
 
 	function getGif(){
@@ -55,7 +81,7 @@
 		var imageUrlStill = results[i].images.original_still.url;
 
 
-		var celebImg = $("<img>").attr("src", imageUrlStill).attr("data-still", imageUrlStill).attr("data-animate", imageUrl).attr("data-state", "still").addClass("gif");
+		var celebImg = $("<img>").attr("src", imageUrlStill).attr("data-still", imageUrlStill).attr("data-animate", imageUrl).attr("data-state", "animate").addClass("gif");
 
 		var rating = $("<p>").text("Rating: " + results[i].rating);
 
@@ -67,7 +93,7 @@
 		$("#gif-view").append(imagesDiv);
 
 		$(".gif").on("click", function(event) {
-		console.log(this)
+	
 		event.preventDefault();
 		var state = $(this).attr("data-state");
 		
@@ -97,7 +123,7 @@
 		$("#buttons-view").empty();
 
 		for (var i = 0; i < topics.length; i++) {
-			var a = $("<buttons>");
+			var a = $("<button>");
 			a.addClass("gifs");
 			a.attr("data-name",topics[i]);
 			a.text(topics[i]);
