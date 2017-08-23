@@ -8,11 +8,20 @@
     form,
     input {
       margin: 10px;
+      justify-content: center;
+    }
+
+    .wrapper{
+    	margin-top: 10%;
+    	margin-left: 20%;
+    	margin-right: 20%
+    	justify-content: center;
     }
 
     body {
     	background-color: pink;
     	font-family: helvetica;
+
     }
 
     button {
@@ -21,35 +30,35 @@
     	border: round;
     	width: 10%;
     	height: 5%;
+    	justify-content: center;
     }
 
 
   </style>
 </head>
-<body>
+<body class="wrapper">
 
 	<div class="container">
 		<h1>Celebrity gifs!</h1>
 
 		
-		  <div id ="buttons-view"></div>
+	<div id ="buttons-view"></div>
 
-		<form id="gif-form">
-      <label for="gif-input">Add a gif</label>
+	<form id="gif-form">
+      <label for="gif-input">Add a celeb:</label>
       <input type="text" id="gif-input"><br>
-		
-
-      
-      <input id="add-gif" type="submit" value="Add a gif!">
+	  <input id="add-gif" type="submit" value="Add!">
     
     </form>
+    <p>	Click on the image for fun times!</p>
     <div id="gif-view"></div>
 	
 	</div>
- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript">
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script type="text/javascript">
 
 	var topics = ["Jennifer Lawrence", "Eddie Murphy", "The Rock", "Ilana Glazer" ];
+
 
 
 	function getGif(){
@@ -57,6 +66,10 @@
 	$("#gif-view").empty();
        
 	var celebrity = $(this).attr("data-name");
+
+	if (celebrity === undefined) {
+		celebrity = "Kendrick Lamar";
+	}
 
 	var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + celebrity + "&api_key=dc6zaTOxFJmzC&limit=10";
 
@@ -67,6 +80,7 @@
 		url: queryURL,
 		method: "GET"
 	}).done(function(response) {
+
 
 		console.log(response);
 
@@ -90,6 +104,7 @@
 
 
 
+		
 		$("#gif-view").append(imagesDiv);
 
 		$(".gif").on("click", function(event) {
@@ -114,7 +129,7 @@
 	})
 
 	}
-	getGif();
+
 
 
 
@@ -150,7 +165,7 @@
 
 	
 
-
+	getGif();
 	makeButtons();
 
 	</script>
