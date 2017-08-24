@@ -2,7 +2,10 @@
 <html>
 <head>
 	<title>celebrity gifs</title>
-	 <style type="text/css">
+	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<link href="https://fonts.googleapis.com/css?family=Dancing+Script:700" rel="stylesheet">
+	 <style type="text/css"> 
+	
     button,
     div,
     form,
@@ -12,8 +15,8 @@
     }
 
     .wrapper{
-    	margin-top: 10%;
-    	margin-left: 20%;
+    	margin-top: 5%;
+    	margin-left: 15%;
     	margin-right: 20%
     	justify-content: center;
     }
@@ -24,17 +27,33 @@
 
     }
 
-    button {
+    .btn {
     	background-color: indigo;
+    	border-color:  indigo;
     	color: white;
-    	border: round;
-    	width: 10%;
-    	height: 5%;
-    	justify-content: center;
+    	
+    	
     }
 
+    h1 {
+    	justify-content: center;
+    	font-family: 'Dancing Script', cursive, bold;
+    	font-weight: bolder;
+    	font-size: 65px;
+    }
+
+    .images {
+    	width: 30%;
+    	height: 30%;
+    }
+
+    #buttons-view {
+    	margin-left: 15%
+    	margin-right: 30%;
+    }
 
   </style>
+
 </head>
 <body class="wrapper">
 
@@ -44,14 +63,24 @@
 		
 	<div id ="buttons-view"></div>
 
+
+
 	<form id="gif-form">
       <label for="gif-input">Add a celeb:</label>
       <input type="text" id="gif-input"><br>
-	  <input id="add-gif" type="submit" value="Add!">
+	  <input id="add-gif" type="submit" value="Add!" class="btn btn-success">
     
     </form>
     <p>	Click on the image for fun times!</p>
-    <div id="gif-view"></div>
+
+    <div class="card" style="width: 45rem;">
+  <img class="card-img-top" src="...">
+  <div class="card-body">
+   
+ 	<div id="gif-view"></div>
+  </div>
+</div>
+   <!--  <div id="gif-view"></div> -->
 	
 	</div>
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -105,6 +134,7 @@
 
 
 		
+		
 		$("#gif-view").append(imagesDiv);
 
 		$(".gif").on("click", function(event) {
@@ -139,11 +169,12 @@
 
 		for (var i = 0; i < topics.length; i++) {
 			var a = $("<button>");
-			a.addClass("gifs");
+			a.addClass("gifs").addClass("btn btn-info");
 			a.attr("data-name",topics[i]);
 			a.text(topics[i]);
 
 			$("#buttons-view").append(a);
+			$("#gif-input").empty();
 		}
 	}
 
