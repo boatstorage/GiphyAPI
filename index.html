@@ -3,7 +3,7 @@
 <head>
 	<title>celebrity gifs</title>
 	 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<link href="https://fonts.googleapis.com/css?family=Dancing+Script:700" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Baloo+Bhaijaan|Dancing+Script:700" rel="stylesheet">
 	 <style type="text/css"> 
 	
     button,
@@ -23,14 +23,16 @@
 
     body {
     	background-color: pink;
-    	font-family: helvetica;
-
+    	font-family: 'Baloo Bhaijaan', cursive;
+    	font-size: 22px;
+    	
     }
 
     .btn {
     	background-color: indigo;
     	border-color:  indigo;
     	color: white;
+    	font-family: helvetica;
     	
     	
     }
@@ -43,13 +45,17 @@
     }
 
     .images {
-    	width: 30%;
-    	height: 30%;
-    }
+    	max-width: 300px;
+    	
 
     #buttons-view {
     	margin-left: 15%
     	margin-right: 30%;
+    }
+
+    #gif-form {
+    	justify-content: center;
+    	margin-left: 20px;
     }
 
   </style>
@@ -68,13 +74,13 @@
 	<form id="gif-form">
       <label for="gif-input">Add a celeb:</label>
       <input type="text" id="gif-input"><br>
-	  <input id="add-gif" type="submit" value="Add!" class="btn btn-success">
-    
+	  <input id="add-gif" type="submit" value="Gif me" class="btn btn-success">
+    	<p>	Click on the image for fun times!</p>
     </form>
-    <p>	Click on the image for fun times!</p>
+    
 
-    <div class="card" style="width: 45rem;">
-  <img class="card-img-top" src="...">
+   <div class="card" style="width: 45rem;">
+  <img class="card-img-top" src="">
   <div class="card-body">
    
  	<div id="gif-view"></div>
@@ -86,7 +92,7 @@
  	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 	<script type="text/javascript">
 
-	var topics = ["Jennifer Lawrence", "Eddie Murphy", "The Rock", "Ilana Glazer" ];
+	var topics = ["Ilana Glazer","Eddie Murphy", "Jennifer Lawrence",  "The Rock", "Tyra Banks" ];
 
 
 
@@ -174,7 +180,9 @@
 			a.text(topics[i]);
 
 			$("#buttons-view").append(a);
-			$("#gif-input").empty();
+			$("#gif-input").val('');
+
+
 		}
 	}
 
@@ -188,6 +196,8 @@
 		makeButtons();
 		
 	});
+
+	
 
 
 	
